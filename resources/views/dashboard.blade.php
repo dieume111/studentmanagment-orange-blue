@@ -5,7 +5,7 @@
 <div style="max-width: 1200px; margin: 0 auto; padding: 20px;">
     <!-- Header -->
     <div style="display: flex; align-items: center; background: #007bff; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px;">
-        <div style="width: 50px; height: 50px; background: #ff6200; border-rdius: 50%; margin-right: 15px;"></div> <!-- Logo Placeholder -->
+        <div style="width: 50px; height: 50px; background: #ff6200; border-radius: 50%; margin-right: 15px;"></div>
         <h1 style="margin: 0; font-size: 24px;">St. Kizito Save School Dashboard</h1>
     </div>
 
@@ -21,9 +21,9 @@
         </div>
     </div>
 
-    <!-- Attendance Report -->
+    <!-- Student Report -->
     <div style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-        <h2 style="color: #ff6200; margin: 0 0 15px;">Attendance Report</h2>
+        <h2 style="color: #ff6200; margin: 0 0 15px;">Student Report</h2>
         <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
             <thead>
                 <tr style="background: #007bff; color: white; text-align: left;">
@@ -34,16 +34,16 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($attendance as $record)
+                @forelse ($students as $student)
                     <tr style="background: {{ $loop->even ? '#f8f9fa' : 'white' }};">
-                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $record->student->first_name }} {{ $record->student->last_name }}</td>
-                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $record->course->course_name }}</td>
-                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $record->attendance_date }}</td>
-                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $record->attendance_status }}</td>
+                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $student->first_name }} {{ $student->last_name }}</td>
+                        <td style="padding: 12px; border: 1px solid #ccc;">N/A</td> <!-- Placeholder: No direct course relation -->
+                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $student->date_of_birth }}</td>
+                        <td style="padding: 12px; border: 1px solid #ccc;">{{ $student->gender }}</td> <!-- Using gender as status placeholder -->
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" style="padding: 12px; border: 1px solid #ccc; text-align: center; color: #666;">No attendance records found.</td>
+                        <td colspan="4" style="padding: 12px; border: 1px solid #ccc; text-align: center; color: #666;">No student records found.</td>
                     </tr>
                 @endforelse
             </tbody>
@@ -52,7 +52,6 @@
 </div>
 
 <style>
-    /* Hover effect for cards */
     div[style*="flex: 1; background: white"]:hover {
         transform: translateY(-5px);
     }

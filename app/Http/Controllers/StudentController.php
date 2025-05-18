@@ -20,7 +20,6 @@ class StudentController extends Controller
             'gender' => 'required|in:Male,Female',
             'date_of_birth' => 'required|date',
         ]);
-
         Student::create($data);
         return redirect()->route('students.index');
     }
@@ -33,7 +32,6 @@ class StudentController extends Controller
             'gender' => 'required|in:Male,Female',
             'date_of_birth' => 'required|date',
         ]);
-
         $student->update($data);
         return redirect()->route('students.index');
     }
